@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Joke Generator</title>
+  <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  background: linear-gradient(to bottom right, #0af, #0fa);
+  width: 100%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 400 10px/1.5 'Poppins', Arial, sans-serif;
+}
+.wrapper {
+  width: clamp(260px, 75%, 500px);
+  background-color: #222;
+  padding: 3rem 4rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+}
+.wrapper span {
+  font-size: 7.8rem;
+}
+.wrapper p {
+  text-align: justify;
+  max-width: 350px;
+  opacity: 1;
+  transition: all 1s;
+}
+.wrapper button {
+  margin-top: 1rem;
+  font: bold 1.8rem 'Poppins', sans-serif;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: #0af;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.wrapper button:hover {
+  background-color: #0fa;
+  color: #222;
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <span>&#128514;</span>
+    <p id="joke_parag"></p>
+    <button id="generate_btn">New Joke</button>
+  </div>
+  <script>
+const joke_parag = document.querySelector('#joke_parag');
+const generate_btn = document.querySelector('#generate_btn');
+const url = 'https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit';
+const get_joke = () => {
+  fetch(url)
+    .then(data => data.json())
+    .then(item => {
+      if (item.type === 'single') joke_parag.innerHTML = item.joke;
+      if (item.type === 'twopart') joke_parag.innerHTML = `${item.setup} <br> ${item.delivery}`;
+    })
+}
+generate_btn.addEventListener('click', get_joke);
+document.addEventListener('DOMContentLoaded', get_joke);
+  </script>
+</body>
+</html>

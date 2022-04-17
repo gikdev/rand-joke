@@ -1,0 +1,52 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+*
+  padding 0
+  margin 0
+  box-sizing border-box
+
+html, body 
+  height 100%
+  background linear-gradient(
+    to bottom right, 
+    #00aaff , 
+    #00ffaa
+  )
+  width 100%
+  color #fff
+  display flex
+  align-items center
+  justify-content center
+  font 400 10px/1.5 'Poppins', Arial, sans-serif
+
+.wrapper
+  width clamp(260px, 75%, 500px)
+  background-color #222
+  padding 3rem 4rem
+  border-radius 0.5rem 
+  font-size 1.5rem
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+  gap 1.5rem
+  box-shadow 0 0.5rem 1rem rgba(0, 0, 0, 0.2)
+  span
+    font-size 7.8rem
+  p
+    text-align justify
+    max-width 350px
+    opacity 1
+    transition all 1s
+  button
+    margin-top 1rem
+    font bold 1.8rem 'Poppins', sans-serif
+    padding 1rem 2rem
+    border-radius 0.5rem
+    background-color #00aaff
+    color white
+    border none
+    cursor pointer
+    &:hover
+      background-color #00ffaa
+      color #222
